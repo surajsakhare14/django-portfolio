@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="py-40 px-6 max-w-6xl mx-auto space-y-32">
+
+  {% for project in projects %}
+  <a href="{{ project.get_absolute_url }}"
+     class="group block space-y-6" data-reveal>
+
+    <h2 class="text-4xl font-medium group-hover:underline">
+      {{ project.title }}
+    </h2>
+
+    <p class="text-gray-400 max-w-2xl">
+      {{ project.short_description }}
+    </p>
+
+    {% if project.image %}
+    <img src="{{ project.image.url }}"
+         class="w-full rounded-md group-hover:scale-[1.01] transition">
+    {% endif %}
+
+  </a>
+  {% endfor %}
+
+</section>
+{% endblock %}

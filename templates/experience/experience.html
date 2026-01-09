@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}
+Experience · {{ hero.name }}
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================
+  EXPERIENCE INTRO
+========================= -->
+<section class="min-h-[60vh] flex items-center px-6">
+  <div class="max-w-4xl mx-auto space-y-8" data-reveal>
+
+    <h1 class="text-5xl md:text-6xl font-semibold leading-tight">
+      Experience
+    </h1>
+
+    <p class="text-xl text-gray-400 leading-relaxed max-w-3xl">
+      A look at the roles I’ve taken on, the systems I’ve built,
+      and the responsibilities I’ve grown into over time.
+    </p>
+
+  </div>
+</section>
+
+<!-- =========================
+  EXPERIENCE STORIES
+========================= -->
+<section class="py-40 px-6">
+  <div class="max-w-4xl mx-auto space-y-40">
+
+    {% for exp in experiences %}
+    <article class="space-y-8" data-reveal>
+
+      <!-- Role -->
+      <h2 class="text-3xl md:text-4xl font-medium leading-snug">
+        {{ exp.role }}
+      </h2>
+
+      <!-- Company + Duration -->
+      <p class="text-gray-500 text-sm tracking-wide uppercase">
+        {{ exp.company }}
+        ·
+        {{ exp.start_date }}
+        –
+        {{ exp.end_date|default:"Present" }}
+      </p>
+
+      <!-- Description -->
+      <div class="text-gray-300 text-lg leading-relaxed space-y-6 max-w-3xl">
+        {{ exp.description|linebreaks }}
+      </div>
+
+    </article>
+    {% empty %}
+    <p class="text-gray-500">Experience details coming soon.</p>
+    {% endfor %}
+
+  </div>
+</section>
+
+<!-- =========================
+  EXPERIENCE CLOSING
+========================= -->
+<section class="py-40 px-6 bg-white text-black">
+  <div class="max-w-4xl mx-auto space-y-8" data-reveal>
+
+    <h2 class="text-3xl md:text-4xl font-medium">
+      What I bring to a team
+    </h2>
+
+    <p class="text-lg leading-relaxed">
+      Beyond technical skills, I bring clarity, ownership,
+      and a product-focused mindset.
+      I care about building things that last —
+      systems that are understandable, maintainable,
+      and aligned with real business goals.
+    </p>
+
+  </div>
+</section>
+
+{% endblock %}

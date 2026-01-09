@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ project.title }} · {{ hero.name }}
+{% endblock %}
+
+{% block content %}
+
+<section class="py-40 px-6">
+  <div class="max-w-4xl mx-auto space-y-20">
+
+    <!-- Title -->
+    <header class="space-y-6" data-reveal>
+      <h1 class="text-5xl md:text-6xl font-semibold leading-tight">
+        {{ project.title }}
+      </h1>
+
+      <p class="text-xl text-gray-400 max-w-3xl">
+        {{ project.short_description }}
+      </p>
+    </header>
+
+    <!-- Image -->
+    {% if project.image %}
+    <div data-reveal>
+      <img src="{{ project.image.url }}"
+           alt="{{ project.title }}"
+           class="w-full rounded-lg">
+    </div>
+    {% endif %}
+
+    <!-- Context -->
+    <section class="space-y-6" data-reveal>
+      <h2 class="text-2xl font-medium">Overview</h2>
+      <div class="text-gray-300 leading-relaxed space-y-4">
+        {{ project.description|linebreaks }}
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="space-y-4" data-reveal>
+      <h2 class="text-sm uppercase tracking-widest text-gray-500">
+        Technology
+      </h2>
+      <div class="flex flex-wrap gap-3">
+        {% for tech in project.tech_list %}
+        <span class="border border-white/20 px-4 py-1 text-sm">
+          {{ tech }}
+        </span>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Links -->
+    <section class="flex gap-8 pt-12 text-lg" data-reveal>
+      {% if project.github_url %}
+      <a href="{{ project.github_url }}" target="_blank"
+         class="hover:underline">
+        GitHub →
+      </a>
+      {% endif %}
+
+      {% if project.live_url %}
+      <a href="{{ project.live_url }}" target="_blank"
+         class="hover:underline">
+        Live Project →
+      </a>
+      {% endif %}
+    </section>
+
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}{{ hero.name }}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="{{ hero.subtitle }}">
+  <meta name="author" content="{{ hero.name }}">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+
+<body class="bg-black text-white overflow-x-hidden">
+
+  <div class="bg-motion"></div>
+
+  {% include "partials/navbar.html" %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "partials/footer.html" %}
+
+  <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ hero.name }} · {{ hero.title }}
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================
+  HERO SECTION
+========================= -->
+<section class="min-h-screen flex items-center justify-center px-6">
+  <div class="max-w-4xl mx-auto text-center space-y-10" data-reveal>
+
+    <h1 class="text-5xl md:text-7xl font-semibold leading-tight">
+      Suraj Sakhare
+    </h1>
+
+    <h2 class="text-xl md:text-2xl text-gray-400">
+      {{ hero.title }}
+    </h2>
+
+    <p class="text-gray-300 max-w-2xl mx-auto leading-relaxed">
+      {{ hero.subtitle }}
+    </p>
+
+    <div class="flex flex-col sm:flex-row justify-center gap-6 pt-6">
+      <a href="/projects/"
+         class="px-8 py-3 border border-white hover:bg-white hover:text-black transition">
+        View Work
+      </a>
+
+      <a href="{% static 'resume/Suraj_Resume.pdf' %}"
+         download
+         class="px-8 py-3 bg-white text-black hover:opacity-80 transition">
+        Download Resume
+      </a>
+    </div>
+
+    <div class="pt-24 text-gray-500 animate-bounce">
+      ↓
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================
+  WHAT I DO
+========================= -->
+<section class="py-40 px-6">
+  <div class="max-w-4xl mx-auto text-center space-y-10" data-reveal>
+
+    <h2 class="text-3xl md:text-4xl font-medium">
+      I build reliable backend systems
+    </h2>
+
+    <p class="text-gray-400 text-lg leading-relaxed">
+      I focus on designing and building scalable backend architectures —
+      APIs, authentication systems, databases, and integrations that
+      power real-world products and businesses.
+    </p>
+
+  </div>
+</section>
+
+<!-- =========================
+  FEATURED WORK
+========================= -->
+<section class="py-40 px-6">
+  <div class="max-w-6xl mx-auto space-y-32">
+
+    <h2 class="text-3xl font-medium" data-reveal>
+      Selected Work
+    </h2>
+
+    {% for project in projects %}
+    <a href="{{ project.get_absolute_url }}"
+       class="block space-y-6 group"
+       data-reveal>
+
+      <h3 class="text-2xl md:text-3xl font-medium group-hover:underline">
+        {{ project.title }}
+      </h3>
+
+      <p class="text-gray-400 max-w-2xl leading-relaxed">
+        {{ project.short_description }}
+      </p>
+
+      {% if project.image %}
+      <img src="{{ project.image.url }}"
+           alt="{{ project.title }}"
+           class="w-full rounded-md transition group-hover:scale-[1.01]">
+      {% endif %}
+
+    </a>
+    {% empty %}
+    <p class="text-gray-500">No featured projects yet.</p>
+    {% endfor %}
+
+  </div>
+</section>
+
+<!-- =========================
+  BACKEND MINDSET
+========================= -->
+<section class="py-40 px-6 bg-white text-black">
+  <div class="max-w-4xl mx-auto space-y-8" data-reveal>
+
+    <h2 class="text-3xl md:text-4xl font-medium">
+      Backend-first mindset
+    </h2>
+
+    <p class="text-lg leading-relaxed">
+      I care deeply about clean APIs, data integrity, security,
+      performance, and long-term maintainability.
+      My approach favors clarity, reliability, and thoughtful design
+      over unnecessary complexity.
+    </p>
+
+  </div>
+</section>
+
+<!-- =========================
+  FINAL CTA
+========================= -->
+<section class="py-40 px-6 text-center">
+  <div class="max-w-3xl mx-auto space-y-8" data-reveal>
+
+    <h2 class="text-4xl font-medium">
+      Let’s build something solid
+    </h2>
+
+    <p class="text-gray-400 text-lg">
+      If you’re building a product and need a dependable backend engineer,
+      I’d be happy to talk.
+    </p>
+
+    <a href="/contact/"
+       class="inline-block px-10 py-4 border border-white hover:bg-white hover:text-black transition">
+      Get in touch
+    </a>
+
+  </div>
+</section>
+
+{% endblock %}

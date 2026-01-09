@@ -1,0 +1,73 @@
+/* Base */
+body {
+  background: black;
+  color: white;
+}
+
+/* Subtle background motion */
+.bg-motion {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bg-motion::before,
+.bg-motion::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.12;
+  animation: float 20s ease-in-out infinite alternate;
+}
+
+.bg-motion::before {
+  background: white;
+  top: 10%;
+  left: 15%;
+}
+
+.bg-motion::after {
+  background: white;
+  bottom: 10%;
+  right: 15%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0) translateX(0);
+  }
+  to {
+    transform: translateY(-80px) translateX(60px);
+  }
+}
+
+/* Reveal animation */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.9s ease;
+}
+
+.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Form inputs */
+input, textarea {
+  background: transparent;
+  border: 1px solid #444;
+  padding: 14px;
+  color: white;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #777;
+}
+
