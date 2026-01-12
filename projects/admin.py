@@ -12,7 +12,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ("Core Info", {
-            "fields": ("title", "slug", "short_description", "description")
+            "fields": ("title", "slug", "short_description", "tech_stack", "description")
         }),
         ("Media", {
             "fields": ("image",)
