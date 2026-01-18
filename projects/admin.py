@@ -14,8 +14,9 @@ class ProjectAdmin(admin.ModelAdmin):
         ("Core Info", {
             "fields": ("title", "slug", "short_description", "tech_stack", "description")
         }),
-        ("Media", {
-            "fields": ("image",)
+        ("Media (Static Images)", {
+            "fields": ("image",),
+            "description": "Use path like: images/projects/giftcard-app/giftcard-app.jpg"
         }),
         ("Links", {
             "fields": ("github_url", "live_url")

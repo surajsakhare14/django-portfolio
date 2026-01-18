@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 {{ project.title }} · {{ hero.name }}
@@ -21,13 +22,13 @@
     </header>
 
     <!-- Image -->
-    {% if project.image %}
     <div data-reveal>
-      <img src="{{ project.image.url }}"
-           alt="{{ project.title }}"
-           class="w-full rounded-lg">
+    <img
+      src="{% static project.image %}"
+      alt="{{ project.title }}"
+      class="rounded-lg opacity-90 group-hover:opacity-100 transition"
+    >
     </div>
-    {% endif %}
 
     <!-- Context -->
     <section class="space-y-6" data-reveal>

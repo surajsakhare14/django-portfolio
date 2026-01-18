@@ -8,9 +8,13 @@ class Project(models.Model):
     short_description = models.TextField()
     description = models.TextField()
     tech_stack = models.CharField(max_length=300)
-    image = models.ImageField(upload_to="projects/", blank=True, null=True)
     github_url = models.URLField(blank=True)
     live_url = models.URLField(blank=True)
+    image = models.CharField(
+        max_length=255,
+        help_text="Path inside static folder, e.g. images/projects/demo.jpg"
+    )
+
     featured = models.BooleanField(default=False)
 
     def __str__(self):
@@ -30,8 +34,12 @@ class ProjectImage(models.Model):
         related_name="gallery",
         on_delete=models.CASCADE
     )
-    image = models.ImageField(upload_to="projects/gallery/")
+    image = models.CharField(
+        max_length=255,
+        help_text="Static path, e.g. images/projects/gallery/demo-1.jpg"
+    )
     caption = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return f"{self.project.title} image"
+

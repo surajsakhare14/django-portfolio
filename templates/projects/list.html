@@ -1,10 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block content %}
 <section class="py-40 px-6 max-w-6xl mx-auto space-y-32">
 
   {% for project in projects %}
   <a href="{{ project.get_absolute_url }}"
-     class="group block space-y-6" data-reveal>
+     class="group block space-y-6"
+     data-reveal>
 
     <h2 class="text-4xl font-medium group-hover:underline">
       {{ project.title }}
@@ -14,10 +17,11 @@
       {{ project.short_description }}
     </p>
 
-    {% if project.image %}
-    <img src="{{ project.image.url }}"
-         class="w-full rounded-md group-hover:scale-[1.01] transition">
-    {% endif %}
+    <img
+      src="{% static project.image %}"
+      alt="{{ project.title }}"
+      class="rounded-lg opacity-90 group-hover:opacity-100 transition"
+    >
 
   </a>
   {% endfor %}

@@ -87,11 +87,11 @@
         {{ project.short_description }}
       </p>
 
-      {% if project.image %}
-      <img src="{{ project.image.url }}"
-           alt="{{ project.title }}"
-           class="w-full rounded-md transition group-hover:scale-[1.01]">
-      {% endif %}
+      <img
+        src="{% static project.image %}"
+        alt="{{ project.title }}"
+        class="rounded-lg opacity-90 group-hover:opacity-100 transition"
+      >
 
     </a>
     {% empty %}
